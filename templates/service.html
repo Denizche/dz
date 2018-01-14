@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+                {% block title %}Услуга № {% endblock %}
+
+                {% block header %}<h1></h1>{% endblock %}
+
+                {% block body %}
+                    <form action="" method="post">
+                                 <div style="font-weight: 600; font-size: 150%" >{{ service.title }}</div>
+                                 <br>
+                                     Цена: {{ service.price }} рублей час<br>
+                                    {% if service.picture %}
+                                    <img class="img-service" src="{{ service.picture.url }}" width="250" height="250">
+                                    {% endif %}<br><br><br>
+                                 <div style="font-weight: 600; font-size: 150%" >Активные заказы данной услуги</div>
+                                 {% for order in orders %}
+                                   <a href="/allorders/{{ order.id }}" class="course-element">
+                                       <span class="service-title">Заказ № {{ order.id }} - {{ order.service }} - {{ order.user }}</span><br>
+                                   </a>
+                                 {% endfor %}
+                          </form>
+                {% endblock %}
+
+
+

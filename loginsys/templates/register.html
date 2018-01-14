@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <h2>Register</h2>
+    <div class="large-offset-r large-6 columns">
+        <form action="/auth/register/" method="post">
+          {% csrf_token %}
+            <h3>Логин</h3>
+            {{ form.username }}
+            <h3>Пароль</h3>
+            {{ form.password1 }}
+            <h3>Повторите пароль</h3>
+            {{ form.password2 }}
+            <h3>E-mail</h3>
+            {{ form.email }}
+            <h3>Имя</h3>
+            {{ form.firstname }}
+            <h3>Фамилия</h3>
+            {{ form.lastname }}
+            <br>
+            {% for error in error_messages %}
+                {{ error }}
+            {% endfor %}
+            <br><br>
+            <input class="button" type="submit" value="Регистрация"><br>
+            <div class="label round secondary"><a href="/auth/register2/">Расширенная регистрация</a></div>
+        </form>
+    </div>
+{% endblock %}

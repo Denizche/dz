@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block title %}Заказ{% endblock %}
+
+{% block header %}<h1 class="text-left">Заказать услугу</h1>{% endblock %}
+
+{% block body %}
+<div class="container">
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Заказ</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Добавление нового заказа</h4>
+        </div>
+        <div class="modal-body">
+
+<div id="body" style="text-align: left">
+        <br>
+        <form method="POST" enctype="multipart/form-data">
+            <div class="add-form">
+                {% csrf_token %}
+                <div class="order_add">
+                    <label for="id_service">Услуга:</label>
+                    <div class="data-and-error">
+                        <select name="service" required id="id_service">
+                            <option value="" selected>Не выбрано</option>
+                            {% for service in services %}
+                                <option value="{{ service.id }}">{{ service }}</option>
+                            {% endfor %}
+                        </select>
+                        <h5 id="error_service_order">Выберете услугу</h5>
+                    </div>
+                </div>
+                <div class="order_add">
+                    <label for="id_user">Исполнитель:</label>
+                    <div class="data-and-error">
+                        <select name="user" required id="id_user">
+                            <option value="" selected>Не выбрано</option>
+                            {% for user in users %}
+                                <option value="{{ user.id }}">{{ user }}</option>
+                            {% endfor %}
+                        </select>
+                        <h5 id="error_user_order">Выберете исполнителя</h5>
+                    </div>
+                </div>
+                <div class="order_add">
+                    <label for="description">Дополнительная информация:</label>
+                    <div class="data-and-error">
+                        <textarea name="description" cols="40" rows="10" resize="none" maxlength="2055"
+                                  id="description"></textarea>
+                    </div>
+                </div>
+                 <div class="order_add">
+                    <label for="desc_picture">Фото:</label>
+                    <div class="data-and-error">
+                        <input type="file" name="desc_picture" id="desc_picture"/>
+                    </div>
+                </div><br>
+                <button type="submit" id="btn_add">Добавить заказ</button>
+                <br>
+            </div>
+        </form>
+    </div>
+
+</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}
+
+
+

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Услуги{% endblock %}
+
+{% block header %}<h1 class="text-left">Заказы услуг</h1>{% endblock %}
+
+{% block body %}
+<div id="body" style="text-align: left">
+    {% if object_list %}
+            <table id="services">
+                <div class="service">
+                    {% for order in object_list %}
+                        <a href="/allorders/{{ order.id }}" class="course-element">
+                            <span class="service-title">Заказ № {{ order.id }} - {{ order.service }} - {{ order.user }}</span><br>
+                        </a>
+                    {% endfor %}
+                </div>
+            </table>
+            {% if is_paginated %}
+                <div class="pagination">
+                    <span class="page-links">
+                        {% if page_obj.has_previous %}
+                            <a class="aquo" href="/?page={{ page_obj.previous_page_number }}">&laquo;</a>
+                        {% else %}
+                            <span class="unavailable" href="">&laquo;</span>
+                        {% endif %}
+                        {% for page in page_obj.paginator.page_range %}
+                            {% if page %}
+                                {% ifequal page page_obj.number %}
+                                    <span class="current-page" href="">{{ page }}</span>
+                                {% else %}
+                                    <a href="/?page={{ page }}" class="page">{{ page }}</a>
+                                {% endifequal %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                            <a class="aquo" href="/?page={{ page_obj.next_page_number }}">&raquo;</a>
+                        {% else %}
+                            <span class="unavailable" href="">&raquo;</span>
+                        {% endif %}
+                        <span hidden id="per-page">{{ page_obj.paginator.per_page }}</span>
+                    </span>
+                </div>
+            {% endif %}
+    {% endif %}
+{% endblock %}
+
+
+

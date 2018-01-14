@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}Услуги{% endblock %}
+
+{% block header %}<h1 href="/order/" class="text-left">Заказать услугу</h1>{% endblock %}
+
+{% block body %}
+<div id="body" style="text-align: left">
+    {% if object_list %}
+            <div id="data-container">
+
+                <div class="service">
+                    {% for service in object_list %}
+                        <a href="/service/{{ service.id }}" class="course-element">
+                            <div class="data-item">
+                                {% if service.picture %}
+                                    <img class="img-service" src="{{ service.picture.url }}" width="250" height="250">
+                                {% endif %}
+                            </div>
+                            <span class="service-title">{{ service.title }}</span>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+{#            {% if is_paginated %}#}
+{#                <div class="pagination">#}
+{#                    <span class="page-links">#}
+{#                        {% if page_obj.has_previous %}#}
+{#                            <a class="aquo" href="/?page={{ page_obj.previous_page_number }}">&laquo;</a>#}
+{#                        {% else %}#}
+{#                            <span class="unavailable" href="">&laquo;</span>#}
+{#                        {% endif %}#}
+{#                        {% for page in page_obj.paginator.page_range %}#}
+{#                            {% if page %}#}
+{#                                {% ifequal page page_obj.number %}#}
+{#                                    <span class="current-page" href="">{{ page }}</span>#}
+{#                                {% else %}#}
+{#                                    <a href="/?page={{ page }}" class="page">{{ page }}</a>#}
+{#                                {% endifequal %}#}
+{#                            {% endif %}#}
+{#                        {% endfor %}#}
+{#                        {% if page_obj.has_next %}#}
+{#                            <a class="aquo" href="/?page={{ page_obj.next_page_number }}">&raquo;</a>#}
+{#                        {% else %}#}
+{#                            <span class="unavailable" href="">&raquo;</span>#}
+{#                        {% endif %}#}
+{#                        <span hidden id="per-page">{{ page_obj.paginator.per_page }}</span>#}
+{#                    </span>#}
+{#                </div>#}
+{#            {% endif %}#}
+        <div id="button-more" onclick="lazyload.load()">загрузить еще</div>
+        <div id="loading-div">загружаю дополнительные элементы</div>
+    {% endif %}
+{% endblock %}
+
+
+
+</div>

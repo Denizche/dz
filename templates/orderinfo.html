@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+                {% block title %}Услуга № {% endblock %}
+
+                {% block header %}<h1></h1>{% endblock %}
+
+                {% block body %}
+                    <form action="" method="post">
+                                 <div style="font-weight: 600; font-size: 150%" >{{ userservice.service }}</div>
+                                 <br>
+                                     Исполнитель: {{ userservice.user }} <br>
+                                     Description of the task: {{ userservice.description }}<br>
+                                    {% if userservice.desc_picture %}
+                                    <img class="img-service" src="{{ userservice.desc_picture.url }}" width="250" height="250">
+                                      {% endif %}
+                          </form>
+
+                {% endblock %}
+
+
+
