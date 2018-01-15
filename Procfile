@@ -1,0 +1,1 @@
+web: gunicorn Lab_5.wsgi
