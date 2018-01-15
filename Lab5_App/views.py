@@ -34,7 +34,6 @@ class OrdersList(ListView):
     form_class = ServiceForm
     model = Service
     template_name = "orders.html"
-    paginate_by = 3
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -54,6 +53,7 @@ class AllOrders(ListView):
     form_class = UserServiceForm
     model = UserService
     template_name = "allorders.html"
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = UserService.objects.all()
@@ -94,4 +94,3 @@ def service_info(request, id):
     #if request.POST and titleform.is_valid():
     orders = UserService.objects.filter(service=id)
     return render(request, 'service.html', locals())
-    

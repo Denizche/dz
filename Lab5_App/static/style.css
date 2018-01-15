@@ -18,6 +18,7 @@ h1.brand {
     text-shadow: 1px 1px 0 #000000;
     width: 222px;
 }
+
 .collapse{
 	display:table;
 	float:right;
@@ -511,3 +512,4 @@ border-bottom: 0;
 .ddbtn img{
 	float:right;
 }
+
